@@ -234,18 +234,29 @@ class MySet
             return false;
         }
     }
+    
+    MySet operator ^(MySet m)
+    {
+    		MySet temp;
+    		temp.set(this->n);
+    		temp.p=this->p;
+            MySet w=(temp+m);
+            MySet u=(temp*m);
+            
+    		return (w-u);    
+	}
 };
 
 template<typename T>
 void set(T a)
 {	
     int choice,n,m;
-    	cout<<"\n1 for powerset of a set"<<endl;
-        cout<<"2 for union of two set"<<endl;
-        cout<<"3 for intersection of two set"<<endl;
-        cout<<"4 for difference between two set"<<endl;
-        cout<<"5 for equality of two set "<<endl;
-        cout<<"6 for symmetric difference "<<endl;
+    	cout<<"\t\t 1 for powerset of a set"<<endl;
+        cout<<"\t\t 2 for union of two set"<<endl;
+        cout<<"\t\t 3 for intersection of two set"<<endl;
+        cout<<"\t\t 4 for difference between two set"<<endl;
+        cout<<"\t\t 5 for equality of two set "<<endl;
+        cout<<"\t\t 6 for symmetric difference "<<endl;
         cout<<"Enter your choice : ";
         cin>>choice;
         
@@ -323,9 +334,8 @@ void set(T a)
             cout<<"\nEnter the size of second set : ";
             cin>>m;
             MySet<T> q(m);
-            MySet<T> w=(k+q);
-            MySet<T> u=(k*q);
-            (w-u).display();
+            MySet<T> v=k^q;
+            v.display();
 		}
             break;
 			
@@ -339,7 +349,7 @@ int main()
 {	
     int choice2;
     double a=5.0;
-    string g="vuy";
+    string g="null";
     char h='n';
     do 
      {
@@ -369,11 +379,11 @@ int main()
         			cout<<"Invalid choice"<<endl;
         		
 		}
+		
         cout<<"\nDo you want to continue y/n : ";
         cin>>h;
     
     }while(h=='y');
     return 0;
 }
-
 
